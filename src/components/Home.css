@@ -1,0 +1,100 @@
+#wrapper {
+    display: flex;
+    margin: 0 auto;
+  }
+  
+  .intro {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background-color: #43d9b8;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%2340c0a4' fill-opacity='0.22'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .intro header {
+    margin-right: 10rem;
+    text-align: right;
+  }
+  
+  .content header {
+    margin-left: 10rem;
+    text-align: left;
+  }
+  
+  .intro header, .content header {
+    width: 30rem;
+  }
+  
+  h1 {
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    text-transform: none;
+  }
+  
+  header  p {
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.175em;
+    line-height: 2.5;
+    text-transform: uppercase;
+    margin: 0 0 2rem 0;
+  }
+  
+  .primary {
+    background-color: #0e2923;
+    color: #ffffff;
+  }
+  
+  .secondary {
+    background-color: #2e6559;
+    color: #ffffff;
+  }
+  
+  .button {
+    border: none;
+    box-shadow: none;
+    transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, color 0.25s ease-in-out;
+    border-radius: 0.325rem;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Raleway", Helvetica, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    height: 3rem;
+    letter-spacing: 0.175em;
+    line-height: 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  
+  .button.primary:hover {
+    background-color: #2e6559;
+  }
+  
+  .button.secondary:hover {
+    background-color: #52b39c;
+  }
+  
+  .content {
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1605449670493-ca1d812d0488?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTY0MzU3MjA1Nw&ixlib=rb-1.2.1&q=85");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+  }
+  
