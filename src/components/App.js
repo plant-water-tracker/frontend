@@ -2,6 +2,8 @@ import React from 'react';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
+import Header from './Header';
+import UserDashboard from './UserDashboard';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 function App() {
@@ -11,10 +13,16 @@ function App() {
 
         <Switch>
 
+          <Route path='/user-dash'>
+            <Header/>
+            <UserDashboard/>
+          </Route>
           <Route path='/login'>
+            <Header/>
             <Login/>
           </Route>
           <Route path='/register'>
+            <Header/>
             <Register/>
           </Route>
           <Route exact path='/'>
