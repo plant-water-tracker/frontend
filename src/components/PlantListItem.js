@@ -13,11 +13,6 @@ const PlantListItem = (props)=> {
           <button>Edit</button>
         </Link>
       </td>
-      <td>
-        <Link to='/user-dash'>
-            <button>Delete</button>
-        </Link>
-      </td>
   </tr>);
 }
 

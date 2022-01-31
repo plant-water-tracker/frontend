@@ -1,9 +1,12 @@
 import React from "react";
+import plants from "../mocks/data";
+import PlantListItem from "./PlantListItem";
 
 const UserDashboard = (props) => {
     return (
         <div>
             <button>Add a New Plant</button>
+            <h3>List of your plants</h3>
             <table>
                 <thead>
                 <tr>
@@ -11,15 +14,13 @@ const UserDashboard = (props) => {
                     <th>Species</th>
                     <th>Watering Frequency</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
-                    <h3>List of plants will go here</h3>
                     {
                         //plants data passed in through props
-                        // plantsData.map(plant=><PlantListItem key={plant.id} plant={plant}/>)
+                        plants.map(plant=><PlantListItem key={plant.id} plant={plant}/>)
                     }
                 </tbody>
             </table>
