@@ -5,6 +5,7 @@ import Login from './Login';
 import Header from './Header';
 import UserDashboard from './UserDashboard';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Logout from './Logout';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           <Route path='/user-dash'>
             <Header/>
             <UserDashboard/>
+          </Route>
+          <Route path='/logout'>
+            <Logout/>
           </Route>
           <Route path='/login'>
             <Header/>
