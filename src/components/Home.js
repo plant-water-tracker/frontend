@@ -1,27 +1,28 @@
 import React from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = (props) => {
     return (
         <div id="wrapper">
-            <section class="intro">
+            <section className="intro">
                 <header>
                     <h1>Plant Water Tracker</h1>
                     <p>
                         Never forget when it's time to feed your foliage and quench your
                         plants' thirst.
                     </p>
-                    <button class="button primary">Sign In</button>
+                    <Link to='login'><button className="button primary">Sign In</button></Link>
                 </header>
             </section>
             
-            <div class="content">
+            <div className="content">
                 <header>
                     <h1>New User</h1>
                     <p>
                         Start creating your own plant watering schedules today.
                     </p>
-                    <button class="button secondary">Sign Up</button>
+                    <Link to='register'><button className="button secondary">Sign Up</button></Link>
                 </header>
             </div>
         </div>
