@@ -9,8 +9,8 @@ const PlantListItem = (props)=> {
       <td>{species}</td>
       <td>{h2oFrequency}</td>
       <td>
-        <Link to={`/user-dash/edit/${id}`} >
-          <button>Edit</button>
+        <Link to={`/user-dash/edit/${id}`} className='edit'>
+          Edit
         </Link>
       </td>
   </tr>);

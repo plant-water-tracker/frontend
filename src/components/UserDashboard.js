@@ -1,13 +1,14 @@
 import React from "react";
 import plants from "../mocks/data";
 import PlantListItem from "./PlantListItem";
+import './UserDashboard.css'
 
 const UserDashboard = (props) => {
     return (
         <div>
             <button>Add a New Plant</button>
             <h3>List of your plants</h3>
-            <table>
+            <table className="table">
                 <thead>
                 <tr>
                     <th>Nickname</th>

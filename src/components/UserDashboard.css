@@ -1,0 +1,31 @@
+table {
+    font-size: 20px;
+    border:#43d9b8 1px solid;
+    text-align: center;
+  }
+  
+  table.table tr th, table.table tr td {
+      border-color: #43d9b8;
+      padding: 20px 15px;
+      vertical-align: middle;
+  }
+  table.table tr th {
+      width: 20%;
+  }
+
+  table.table td {
+      border-top: #43d9b8 1px solid;
+  }
+  
+
+  .edit {
+      padding: 2% 20px;
+      text-decoration: none;
+      background-color: #0e2923;
+      color: white;
+      border-radius: 0.325rem;
+  }
+
+  .edit:hover {
+    background-color: #2e6559;
+  }
