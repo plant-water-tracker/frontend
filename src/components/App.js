@@ -7,6 +7,7 @@ import UserDashboard from './UserDashboard';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Logout from './Logout';
 import PlantDashboard from './PlantDashboard';
+import AddPlant from './AddPlant';
 
 function App() {
   return (
@@ -14,9 +15,13 @@ function App() {
       <Router>
 
         <Switch>
-
+          
           <Route path='/user-dash/edit/:id'>
             <PlantDashboard/>
+          </Route>
+          <Route path='/user-dash/add'>
+            <Header/>
+            <AddPlant/>
           </Route>
           <Route path='/user-dash'>
             <Header/>
