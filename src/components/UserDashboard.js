@@ -4,7 +4,7 @@ import PlantListItem from "./PlantListItem";
 import './UserDashboard.css'
 
 const UserDashboard = (props) => {
-    const {plants} = props;
+    const {plants, handleDelete} = props;
 
     return (
         <div>
@@ -17,13 +17,14 @@ const UserDashboard = (props) => {
                     <th>Species</th>
                     <th>Watering Frequency</th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
                 <tbody>
                     {
                         //plants data passed in through props
-                        plants.map(plant=><PlantListItem key={plant.plant_id} plant={plant}/>)
+                        plants.map(plant=><PlantListItem key={plant.plant_id} plant={plant} handleDelete={handleDelete}/>)
                     }
                 </tbody>
             </table>

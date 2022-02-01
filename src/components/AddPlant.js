@@ -26,7 +26,7 @@ const AddPlant = (props) => {
         //temp push
         push(`/user-dash`);
 
-        // axios.post(`http://localhost:9000/api/movies`, plant)
+        // axios.post(`http://localhost:9000/api/plants`, plant)
         //     .then(res=>{
         //         props.setPlants(res.data);
         //         push(`/user-dash`);
