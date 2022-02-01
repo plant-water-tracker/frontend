@@ -56,12 +56,10 @@ function App(props) {
           <PrivateRoute path='/logout' component={Logout} />
 
           <Route path='/login'>
-            <Header/>
             <Login/>
           </Route>
 
           <Route path='/register'>
-            <Header/>
             <Register/>
           </Route>
 

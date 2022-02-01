@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Header from "./Header";
 
 const Login = (props) => {
     const {push} = useHistory();
@@ -41,6 +42,7 @@ const Login = (props) => {
 
     return (
         <div>
+            <Header/>
             <form onSubmit={handleLogin}>
                 <div>
                     <label htmlFor='username'>Username</label>

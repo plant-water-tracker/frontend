@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import Header from "./Header";
 
 const Register = (props) => {
     const [credentials, setCredentials] = useState({
@@ -24,6 +25,7 @@ const Register = (props) => {
 
     return (
         <div>
+            <Header/>
             <form onSubmit={handleRegister}>
                 <div>
                     <label htmlFor='username'>Username</label>
