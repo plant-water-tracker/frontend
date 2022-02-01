@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import Header from './Header';
 
 import axios from 'axios';
 
@@ -38,6 +39,7 @@ const AddPlant = (props) => {
 
     return (
         <div>
+            <Header/>
             <form onSubmit={handleSubmit}>
                 <div>
                     <h3>Add a Plant</h3>

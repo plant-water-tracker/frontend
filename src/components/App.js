@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from 'axios';
+import PrivateRoute from './PrivateRoute';
 import plantsData from '../mocks/data';
 import Home from './Home';
 import Register from './Register';
@@ -9,7 +10,6 @@ import Header from './Header';
 import UserDashboard from './UserDashboard';
 import Logout from './Logout';
 import EditPlant from './EditPlant';
-import PlantDashboard from './PlantDashboard';
 import AddPlant from './AddPlant';
 
 function App(props) {
@@ -47,23 +47,13 @@ function App(props) {
 
         <Switch>
           
-          <Route path='/user-dash/edit/:id'>
-            <EditPlant setPlants={setPlants}/>
-          </Route>
+          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} />
 
-          <Route path='/user-dash/add'>
-            <Header/>
-            <AddPlant setPlants={setPlants}/>
-          </Route>
-
-          <Route path='/user-dash'>
-            <Header/>
-            <UserDashboard plants={plants} handleDelete={handleDelete}/>
-          </Route>
-
-          <Route path='/logout'>
-            <Logout/>
-          </Route>
+          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} />
+            
+          <PrivateRoute path='/user-dash' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
+            
+          <PrivateRoute path='/logout' component={Logout} />
 
           <Route path='/login'>
             <Header/>
