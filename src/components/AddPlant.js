@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import plants from '../mocks/data';
 
 const AddPlant = (props) => {
     const {push} = useHistory();
@@ -21,9 +21,25 @@ const AddPlant = (props) => {
         });
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        //temp push
+        push(`/user-dash`);
+
+        // axios.post(`http://localhost:9000/api/movies`, plant)
+        //     .then(res=>{
+        //         props.setPlants(res.data);
+        //         push(`/user-dash`);
+		// 	})
+		// 	.catch(err=>{
+		// 		console.log(err);
+		// 	})
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <h3>Add a Plant</h3>
                 </div>
@@ -40,6 +56,9 @@ const AddPlant = (props) => {
                         <label>Watering Frequency</label>
                         <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="text" className="form-control"/>
                     </div>
+                </div>
+                <div>
+                    <button className='button primary'>Submit</button>
                 </div>
             </form>
         </div>

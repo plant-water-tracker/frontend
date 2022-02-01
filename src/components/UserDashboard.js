@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import plants from "../mocks/data";
 import PlantListItem from "./PlantListItem";
 import './UserDashboard.css'
 
 const UserDashboard = (props) => {
+    const {plants} = props;
+
     return (
         <div>
-            <Link to='/user-dash/add'><button>Add a New Plant</button></Link>
+            <Link to='/user-dash/add'><button className="button primary">Add a New Plant</button></Link>
             <h3>List of your plants</h3>
             <table className="table">
                 <thead>

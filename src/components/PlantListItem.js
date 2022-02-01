@@ -9,7 +9,7 @@ const PlantListItem = (props)=> {
       <td>{species}</td>
       <td>{h2oFrequency}</td>
       <td>
-        <Link to={`/user-dash/edit/${plant_id}`} className='edit'>
+        <Link to={`/user-dash/edit/${plant_id}`} className='button secondary'>
           Edit
         </Link>
       </td>
