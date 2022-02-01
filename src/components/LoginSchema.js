@@ -10,7 +10,7 @@ const LoginSchema = yup.object().shape({
     password: yup
     .string()
     .trim()
-    .required("password is required")
+    .required("password is required!")
     .min(3, "Password must be longer")
     .max(30, "password is too long."),
 })
