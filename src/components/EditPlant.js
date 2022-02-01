@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
-const AddPlant = (props) => {
+const EditPlant = (props) => {
     const {push} = useHistory();
     const {id} = useParams();
 
@@ -12,6 +12,16 @@ const AddPlant = (props) => {
         species: '',
         h2oFrequency: ''
     });
+
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:9000/api/plants/${id}`)
+	// 		.then(resp=>{
+	// 			setPlant(resp.data);
+	// 		})
+	// 		.catch(err=>{
+	// 			console.log(err);
+	// 		})
+    // }, []);
 
     const handleChange = (e) => {
         setPlant({
@@ -22,11 +32,7 @@ const AddPlant = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        //temp push
-        push(`/user-dash`);
-
-        // axios.post(`http://localhost:9000/api/movies`, plant)
+        // axios.put(`http://localhost:9000/api/plants/${id}`, plant)
         //     .then(res=>{
         //         props.setPlants(res.data);
         //         push(`/user-dash`);
@@ -34,13 +40,13 @@ const AddPlant = (props) => {
 		// 	.catch(err=>{
 		// 		console.log(err);
 		// 	})
-    }
+	}
 
-    return (
+    return(
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <h3>Add a Plant</h3>
+                    <h3>Editing {plant.nickname}</h3>
                 </div>
                 <div>
                     <div className="form-group">
@@ -64,4 +70,4 @@ const AddPlant = (props) => {
     )
 }
 
-export default AddPlant;
+export default EditPlant;

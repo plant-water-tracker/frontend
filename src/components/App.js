@@ -8,6 +8,7 @@ import Login from './Login';
 import Header from './Header';
 import UserDashboard from './UserDashboard';
 import Logout from './Logout';
+import EditPlant from './EditPlant';
 import PlantDashboard from './PlantDashboard';
 import AddPlant from './AddPlant';
 
@@ -36,7 +37,7 @@ function App(props) {
         <Switch>
           
           <Route path='/user-dash/edit/:id'>
-            <PlantDashboard/>
+            <EditPlant setPlants={setPlants}/>
           </Route>
 
           <Route path='/user-dash/add'>
