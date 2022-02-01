@@ -30,6 +30,17 @@ function App(props) {
     //   });
   }, []);
 
+  const handleDelete = (id) => {
+    // axiosWithAuth()
+    //     .delete(`/plants/${id}`)
+    //         .then(resp=>{
+    //             setPlants(resp.data);
+    //         }) 
+    //         .catch(err=>{
+    //             console.log(err);
+    //         })   
+  }
+
   return (
     <div className="App">
       <Router>
@@ -47,7 +58,7 @@ function App(props) {
 
           <Route path='/user-dash'>
             <Header/>
-            <UserDashboard plants={plants}/>
+            <UserDashboard plants={plants} handleDelete={handleDelete}/>
           </Route>
 
           <Route path='/logout'>
