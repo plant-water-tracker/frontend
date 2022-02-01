@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Login = (props) => {
+    const {push} = useHistory();
 
     const [credentials, setCredentials] = useState({
         username: '',
@@ -19,6 +21,11 @@ const Login = (props) => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+
+        //temp login
+        const tempToken = '12345';
+        localStorage.setItem('token', tempToken);
+        push('/user-dash');
 
         // axios.post('http://localhost:5000/api/login', credentials)
         //     .then(resp=>{
