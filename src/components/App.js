@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from 'axios';
 import PrivateRoute from './PrivateRoute';
-import plantsData from '../mocks/data';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
@@ -28,14 +28,17 @@ function App(props) {
   }, []);
 
   const handleDelete = (id) => {
-    // axiosWithAuth()
-    //     .delete(`/plants/${id}`)
-    //         .then(resp=>{
-    //             setPlants(resp.data);
-    //         }) 
-    //         .catch(err=>{
-    //             console.log(err);
-    //         })   
+    
+    console.log('Deleted plant ID is: ',id);
+    axiosWithAuth()
+        .delete(`/plants/${id}`)
+            .then(resp=>{
+              console.log(resp);
+              setPlants(plants.filter(plant=>(plant.id !== Number(id))));
+            }) 
+            .catch(err=>{
+                console.log(err);
+            })   
   }
 
   return (
@@ -46,7 +49,7 @@ function App(props) {
           
           <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} />
 
-          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} />
+          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             
           <PrivateRoute path='/user-dash' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
             

@@ -9,9 +9,10 @@ const AddPlant = (props) => {
     const {id} = useParams();
 
     const [plant, setPlant] = useState({
-        nickname: '',
-        species: '',
-        h2oFrequency: ''
+        nickname: "",
+        species: "",
+        h2oFrequency: 0,
+        user_id: 1
     });
 
     const handleChange = (e) => {
@@ -24,17 +25,15 @@ const AddPlant = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        //temp push
-        push(`/user-dash`);
-
-        // axios.post(`https://plant-water-tracker.herokuapp.com/api/plants`, plant)
-        //     .then(res=>{
-        //         props.setPlants(res.data);
-        //         push(`/user-dash`);
-		// 	})
-		// 	.catch(err=>{
-		// 		console.log(err);
-		// 	})
+        axios.post(`https://plant-water-tracker.herokuapp.com/api/plants`, plant)
+            .then(res=>{
+                props.setPlants([...props.plants, res.data]);
+                push(`/user-dash`);
+			})
+			.catch(err=>{
+				console.log(err.response.data );
+                console.log('Catching here', plant);
+			})
     }
 
     return (
@@ -55,7 +54,7 @@ const AddPlant = (props) => {
                     </div>
                     <div className="form-group">
                         <label>Watering Frequency</label>
-                        <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="text" className="form-control"/>
+                        <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="form-control"/>
                     </div>
                 </div>
                 <div>
