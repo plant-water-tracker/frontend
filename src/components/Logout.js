@@ -8,10 +8,11 @@ const Logout = () => {
     useEffect(()=>{
 
         //temperory push to homepage
+        localStorage.removeItem('token');
         push('/');
         // const token = localStorage.getItem('token');
 
-        // axios.post('http://localhost:5000/api/logout', {}, {
+        // axios.post('https://plant-water-tracker.herokuapp.com/api/logout', {}, {
         //     headers: {
         //         authorization: token
         //     }

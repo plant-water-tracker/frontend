@@ -15,7 +15,7 @@ const EditPlant = (props) => {
     });
 
     // useEffect(()=>{
-    //     axios.get(`http://localhost:9000/api/plants/${id}`)
+    //     axios.get(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`)
 	// 		.then(resp=>{
 	// 			setPlant(resp.data);
 	// 		})
@@ -33,7 +33,7 @@ const EditPlant = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // axios.put(`http://localhost:9000/api/plants/${id}`, plant)
+        // axios.put(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`, plant)
         //     .then(res=>{
         //         props.setPlants(res.data);
         //         push(`/user-dash`);

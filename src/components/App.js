@@ -18,16 +18,13 @@ function App(props) {
 
   useEffect(()=>{
 
-    //temp set data
-    setPlants(plantsData);
-
-    // axios.get('http://localhost:9000/api/plants')
-    //   .then(res => {
-    //     setPlants(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios.get('https://plant-water-tracker.herokuapp.com/api/plants')
+      .then(res => {
+        setPlants(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
   const handleDelete = (id) => {

@@ -34,7 +34,9 @@ Deployed URL: [https://plant-water-tracker.vercel.app]
 
 # *API Endpoints*
 
-TBD
+https://plant-water-tracker.herokuapp.com/api/plants
+
+https://plant-water-tracker.herokuapp.com/api/users
 
 
 # *Meet the Team*

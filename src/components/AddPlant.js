@@ -27,7 +27,7 @@ const AddPlant = (props) => {
         //temp push
         push(`/user-dash`);
 
-        // axios.post(`http://localhost:9000/api/plants`, plant)
+        // axios.post(`https://plant-water-tracker.herokuapp.com/api/plants`, plant)
         //     .then(res=>{
         //         props.setPlants(res.data);
         //         push(`/user-dash`);
