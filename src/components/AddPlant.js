@@ -9,6 +9,7 @@ const AddPlant = (props) => {
     const {id} = useParams();
 
     const [plant, setPlant] = useState({
+        plant_id: Math.floor(Date.now()/1000),
         nickname: "",
         species: "",
         h2oFrequency: 0,
@@ -32,7 +33,6 @@ const AddPlant = (props) => {
 			})
 			.catch(err=>{
 				console.log(err.response.data );
-                console.log('Catching here', plant);
 			})
     }
 

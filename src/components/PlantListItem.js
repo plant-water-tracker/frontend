@@ -10,7 +10,6 @@ const PlantListItem = (props)=> {
   }
 
   const deleteClick = () => {
-    console.log('Plant ID is: ',plant_id);
     props.handleDelete(plant_id);
   }
 

@@ -29,12 +29,10 @@ function App(props) {
 
   const handleDelete = (id) => {
     
-    console.log('Deleted plant ID is: ',id);
     axiosWithAuth()
         .delete(`/plants/${id}`)
             .then(resp=>{
-              console.log(resp);
-              setPlants(plants.filter(plant=>(plant.id !== Number(id))));
+              setPlants(plants.filter(plant=>(plant.plant_id !== (id))));
             }) 
             .catch(err=>{
                 console.log(err);
@@ -47,7 +45,7 @@ function App(props) {
 
         <Switch>
           
-          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} />
+          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
 
           <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             

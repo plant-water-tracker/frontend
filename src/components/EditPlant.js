@@ -14,15 +14,15 @@ const EditPlant = (props) => {
         h2oFrequency: ''
     });
 
-    // useEffect(()=>{
-    //     axios.get(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`)
-	// 		.then(resp=>{
-	// 			setPlant(resp.data);
-	// 		})
-	// 		.catch(err=>{
-	// 			console.log(err);
-	// 		})
-    // }, []);
+    useEffect(()=>{
+        axios.get(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`)
+			.then(resp=>{
+				setPlant(resp.data[0]);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
+    }, []);
 
     const handleChange = (e) => {
         setPlant({
@@ -33,14 +33,19 @@ const EditPlant = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // axios.put(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`, plant)
-        //     .then(res=>{
-        //         props.setPlants(res.data);
-        //         push(`/user-dash`);
-		// 	})
-		// 	.catch(err=>{
-		// 		console.log(err);
-		// 	})
+        axios.put(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`, plant)
+            .then(res=>{
+                props.setPlants(props.plants.map(plant=> {
+                    if(plant.plant_id === id){
+                        return res.data[0];
+                    }
+                    return plant;
+                }))
+                push(`/user-dash`);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
 	}
 
     return(
