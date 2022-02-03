@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import axios from 'axios';
 import PrivateRoute from './PrivateRoute';
-import plantsData from '../mocks/data';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
@@ -18,27 +18,25 @@ function App(props) {
 
   useEffect(()=>{
 
-    //temp set data
-    setPlants(plantsData);
-
-    // axios.get('http://localhost:9000/api/plants')
-    //   .then(res => {
-    //     setPlants(res.data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios.get('https://plant-water-tracker.herokuapp.com/api/plants')
+      .then(res => {
+        setPlants(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
   const handleDelete = (id) => {
-    // axiosWithAuth()
-    //     .delete(`/plants/${id}`)
-    //         .then(resp=>{
-    //             setPlants(resp.data);
-    //         }) 
-    //         .catch(err=>{
-    //             console.log(err);
-    //         })   
+    
+    axiosWithAuth()
+        .delete(`/plants/${id}`)
+            .then(resp=>{
+              setPlants(plants.filter(plant=>(plant.plant_id !== (id))));
+            }) 
+            .catch(err=>{
+                console.log(err);
+            })   
   }
 
   return (
@@ -47,9 +45,9 @@ function App(props) {
 
         <Switch>
           
-          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} />
+          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
 
-          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} />
+          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             
           <PrivateRoute path='/user-dash' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
             

@@ -32,7 +32,6 @@ const Login = (props) => {
         //     .then(resp=>{
         //         localStorage.setItem('token', resp.data.token);
         //         localStorage.setItem('username', resp.data.username)
-        //         localStorage.setItem('role', resp.data.role)
         //         push('/user-dash');
         //     })
         //     .catch(err=>{
