@@ -39,28 +39,30 @@ const AddPlant = (props) => {
     return (
         <div>
             <Header/>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <h3>Add a Plant</h3>
-                </div>
-                <div>
-                    <div className="form-group">
-                        <label>Nickname</label>
-                        <input value={plant.nickname} onChange={handleChange} name="nickname" type="text" className="form-control"/>
+            <div className="container">
+                <form className="form" onSubmit={handleSubmit}>
+                    <div>
+                        <h1 className='title'>Add a Plant</h1>
                     </div>
-                    <div className="form-group">
-                        <label>Species</label>
-                        <input value={plant.species} onChange={handleChange} name="species" type="text" className="form-control"/>
+                    <div>
+                        <div>
+                            <label className="label">Nickname</label>
+                            <input value={plant.nickname} onChange={handleChange} name="nickname" type="text" className="input"/>
+                        </div>
+                        <div>
+                            <label className="label">Species</label>
+                            <input value={plant.species} onChange={handleChange} name="species" type="text" className="input"/>
+                        </div>
+                        <div>
+                            <label className="label">Watering Frequency</label>
+                            <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="input"/>
+                        </div>
                     </div>
-                    <div className="form-group">
-                        <label>Watering Frequency</label>
-                        <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="form-control"/>
+                    <div>
+                        <button className='button center primary max'>Submit</button>
                     </div>
-                </div>
-                <div>
-                    <button className='button primary'>Submit</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     )
 }

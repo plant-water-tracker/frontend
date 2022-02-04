@@ -2,18 +2,23 @@ import React, {useState, useEffect} from "react";
 import { useParams, useHistory } from 'react-router-dom';
 import axios from "axios";
 import Header from "./Header";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const Profile = (props) => {
     const {push} = useHistory();
     const {id} = useParams();
 
     const [user, setUser] = useState({
+        username: '',
         phoneNumber: '',
         password: ''
     })
 
+    const [disabled, setDisabled] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(true);
+
     useEffect(()=>{
-        axios.get(`https://https://plant-water-tracker.herokuapp.com/api/users/${id}`)
+        axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${id}`)
 			.then(resp=>{
 				console.log(resp);
 			})
@@ -22,11 +27,56 @@ const Profile = (props) => {
 			})
     }, []);
 
+    const handleChange = (e) => {
+        setUser({
+            ...user,
+            [e.target.id] : e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.put(`https://plant-water-tracker.herokuapp.com/api/users/${id}`, user)
+            .then(res=>{
+                push(`/my-plants`);
+			})
+			.catch(err=>{
+				console.log(err);
+			})
+	}
+
+    const handleEditPhone = (e) => {
+        setDisabled(!disabled);
+    }
+    const handleEditPass = (e) => {
+        setIsDisabled(!isDisabled);
+    }
     
     return (
         <div>
             <Header />
-            <h1>My Profile</h1>
+            <div className="container">
+                <form className="form" onSubmit={handleSubmit}>
+                    <div>
+                        <h1 className='title'>My Profile</h1>
+                    </div>
+                    <div>
+                        <div>
+                            <label className="label" >Phone Number</label>
+                            <input value={user.phoneNumber} onChange={handleChange} name="phoneNumber" type="text" className="input" disabled={disabled}/>
+                            <button name="phone" onClick={handleEditPhone}>Edit</button>
+                        </div>
+                        <div>
+                            <label className="label" >Password</label>
+                            <input value={user.password} onChange={handleChange} name="password" type="password" className="input" disabled={isDisabled}/>
+                            <button name="pass" onClick={handleEditPass}>Edit</button>
+                        </div>
+                    </div>
+                    <div>
+                        <button className='button center primary max'>Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
