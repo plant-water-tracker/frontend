@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+    const token = localStorage.getItem('token');
     return(
         <div className='header'>
             <p>Plant Water Tracker</p>
             <ul className='nav'>
-                <li><Link to="login">Login</Link></li>
-                <li><Link to="user-dash">User Dash</Link></li>
-                <li><Link to="logout">Logout</Link></li>
+                {!token && <li><Link to="login">Login</Link></li>}
+                {token && <li><Link to="my-plants">My Plants</Link></li>}
+                {token && <li><Link to="profile">My Profile</Link></li>}
+                {token && <li><Link to="logout">Logout</Link></li>}
             </ul>
         </div>
     );

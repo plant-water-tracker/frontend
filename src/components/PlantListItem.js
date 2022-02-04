@@ -6,7 +6,7 @@ const PlantListItem = (props)=> {
   const { plant_id, nickname, species, h2oFrequency } = props.plant;
 
   const handleClick = () => {
-    push(`/user-dash/edit/${plant_id}`);
+    push(`/my-plants/edit/${plant_id}`);
   }
 
   const deleteClick = () => {

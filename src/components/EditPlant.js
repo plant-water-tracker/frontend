@@ -41,7 +41,7 @@ const EditPlant = (props) => {
                     }
                     return plant;
                 }))
-                push(`/user-dash`);
+                push(`/my-plants`);
 			})
 			.catch(err=>{
 				console.log(err);
