@@ -4,10 +4,10 @@ import axios from 'axios';
 import PrivateRoute from './PrivateRoute';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import Home from './Home';
-import Register from './Register';
+import Signup from './Signup';
 import Login from './Login';
 import Profile from './Profile';
-import UserDashboard from './UserDashboard';
+import MyPlants from './MyPlants';
 import Logout from './Logout';
 import EditPlant from './EditPlant';
 import AddPlant from './AddPlant';
@@ -49,7 +49,7 @@ function App(props) {
 
           <PrivateRoute path='/my-plants/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             
-          <PrivateRoute path='/my-plants' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
+          <PrivateRoute path='/my-plants' component={MyPlants} plants={plants} handleDelete={handleDelete} />
             
           <PrivateRoute path='/profile' component={Profile} />
 
@@ -59,8 +59,8 @@ function App(props) {
             <Login/>
           </Route>
 
-          <Route path='/register'>
-            <Register/>
+          <Route path='/signup'>
+            <Signup/>
           </Route>
 
           <Route exact path='/'>

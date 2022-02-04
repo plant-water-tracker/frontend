@@ -24,7 +24,7 @@ const PlantListItem = (props)=> {
         </button>
       </td>
       <td>
-        {/* delete passed through App->UserDashboard */}
+        {/* delete passed through App->MyPlants */}
         <button onClick={deleteClick} className='button warning'>
           Delete
         </button>

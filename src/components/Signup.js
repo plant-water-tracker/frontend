@@ -1,14 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios";
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from "./Header";
-import './Login.css';
 
-const Login = (props) => {
-    const {push} = useHistory();
-
+const Signup = (props) => {
     const [credentials, setCredentials] = useState({
         username: '',
+        phone: '',
         password: ''
     });
 
@@ -21,36 +18,19 @@ const Login = (props) => {
         });
     };
 
-    const handleLogin = (e) => {
+    const handleSignup = (e) => {
         e.preventDefault();
-
-        //temp login
-        const tempToken = '12345';
-        localStorage.setItem('token', tempToken);
-        push('/my-plants');
-
-        // axios.post('https://plant-water-tracker.herokuapp.com/api/users', credentials)
-        //     .then(resp=>{
-        //         console.log(resp);
-        //         // localStorage.setItem('token', resp.data.token);
-        //         // localStorage.setItem('username', resp.data.username)
-        //         // push('/my-plants');
-        //     })
-        //     .catch(err=>{
-        //         console.log(err.response.data);
-        //         //setError(err.response.data.error)
-        //     })
+        //Axios call will go here
     }
 
     return (
         <div>
             <Header/>
             <div className="title">
-                <h1>Log in</h1>
+                <h1>Sign Up</h1>
             </div>
             <div className="container">
-                
-                <form className="form" onSubmit={handleLogin}>
+                <form className="form" onSubmit={handleSignup}>
                     <div>
                         <label className="label" htmlFor='username'>Username</label>
                         <input
@@ -58,6 +38,16 @@ const Login = (props) => {
                             type='text'
                             id="username"
                             value={credentials.username}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label className="label" htmlFor='phone'>Phone Number</label>
+                        <input
+                            className="input"
+                            type='text'
+                            id="phone"
+                            value={credentials.phone}
                             onChange={handleChange}
                         />
                     </div>
@@ -71,7 +61,7 @@ const Login = (props) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button className="button center primary max" id='submit'>Login</button>
+                    <button className='button center primary max'>Sign Up</button>
                     {/* {error && <p id='error'>{error}</p>} */}
                 </form>
             </div>
@@ -79,4 +69,4 @@ const Login = (props) => {
     )
 }
 
-export default Login;
+export default Signup;

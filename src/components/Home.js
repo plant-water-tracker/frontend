@@ -22,7 +22,7 @@ const Home = (props) => {
                     <p>
                         Start creating your own plant watering schedules today.
                     </p>
-                    <Link to='register'><button className="button secondary">Sign Up</button></Link>
+                    <Link to='signup'><button className="button secondary">Sign Up</button></Link>
                 </header>
             </div>
         </div>

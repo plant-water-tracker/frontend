@@ -9,6 +9,7 @@ const Header = () => {
             <p>Plant Water Tracker</p>
             <ul className='nav'>
                 {!token && <li><Link to="login">Login</Link></li>}
+                {!token && <li><Link to="signup">Signup</Link></li>}
                 {token && <li><Link to="my-plants">My Plants</Link></li>}
                 {token && <li><Link to="profile">My Profile</Link></li>}
                 {token && <li><Link to="logout">Logout</Link></li>}

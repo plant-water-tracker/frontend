@@ -1,4 +1,6 @@
 table {
+    width: 80%;
+    margin: 3rem auto;
     font-size: 20px;
     border:#43d9b8 1px solid;
     text-align: center;
@@ -28,4 +30,16 @@ table {
 
   .edit:hover {
     background-color: #2e6559;
+  }
+
+  .left-space {
+      margin-left: 10%;
+  }
+
+  .subtitle {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin: 0 0 50px;
   }

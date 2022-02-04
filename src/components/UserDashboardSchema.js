@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const UserDashboardSchema = yup.object().shape({
+const MyPlantsSchema = yup.object().shape({
     username: yup
     .string()
     .trim()
@@ -19,4 +19,4 @@ const UserDashboardSchema = yup.object().shape({
     .max(8, 'must be your full phone #')
 })
 
-export default UserDashboardSchema;
+export default MyPlantsSchema;
