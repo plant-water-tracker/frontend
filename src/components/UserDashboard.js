@@ -10,7 +10,7 @@ const UserDashboard = (props) => {
     return (
         <div>
             <Header/>
-            <Link to='/user-dash/add'><button className="button primary">Add a New Plant</button></Link>
+            <Link to='/my-plants/add'><button className="button primary">Add a New Plant</button></Link>
             <h3>List of your plants</h3>
             <table className="table">
                 <thead>

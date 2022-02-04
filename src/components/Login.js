@@ -26,16 +26,18 @@ const Login = (props) => {
         //temp login
         const tempToken = '12345';
         localStorage.setItem('token', tempToken);
-        push('/user-dash');
+        push('/my-plants');
 
-        // axios.post('http://localhost:5000/api/login', credentials)
+        // axios.post('https://plant-water-tracker.herokuapp.com/api/users', credentials)
         //     .then(resp=>{
-        //         localStorage.setItem('token', resp.data.token);
-        //         localStorage.setItem('username', resp.data.username)
-        //         push('/user-dash');
+        //         console.log(resp);
+        //         // localStorage.setItem('token', resp.data.token);
+        //         // localStorage.setItem('username', resp.data.username)
+        //         // push('/my-plants');
         //     })
         //     .catch(err=>{
-        //         setError(err.response.data.error)
+        //         console.log(err.response.data);
+        //         //setError(err.response.data.error)
         //     })
     }
 

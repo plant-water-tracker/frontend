@@ -6,7 +6,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
-import Header from './Header';
+import Profile from './Profile';
 import UserDashboard from './UserDashboard';
 import Logout from './Logout';
 import EditPlant from './EditPlant';
@@ -45,12 +45,14 @@ function App(props) {
 
         <Switch>
           
-          <PrivateRoute path='/user-dash/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
+          <PrivateRoute path='/my-plants/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
 
-          <PrivateRoute path='/user-dash/add' component={AddPlant} setPlants={setPlants} plants={plants} />
+          <PrivateRoute path='/my-plants/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             
-          <PrivateRoute path='/user-dash' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
+          <PrivateRoute path='/my-plants' component={UserDashboard} plants={plants} handleDelete={handleDelete} />
             
+          <PrivateRoute path='/profile' component={Profile} />
+
           <PrivateRoute path='/logout' component={Logout} />
 
           <Route path='/login'>
