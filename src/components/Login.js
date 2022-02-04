@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from "./Header";
@@ -9,7 +9,8 @@ const Login = (props) => {
 
     const [credentials, setCredentials] = useState({
         username: '',
-        password: ''
+        password: '',
+        phoneNumber: ''
     });
 
     const [error, setError] = useState('');
@@ -24,22 +25,17 @@ const Login = (props) => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        //temp login
-        const tempToken = '12345';
-        localStorage.setItem('token', tempToken);
-        push('/my-plants');
-
-        // axios.post('https://plant-water-tracker.herokuapp.com/api/users', credentials)
-        //     .then(resp=>{
-        //         console.log(resp);
-        //         // localStorage.setItem('token', resp.data.token);
-        //         // localStorage.setItem('username', resp.data.username)
-        //         // push('/my-plants');
-        //     })
-        //     .catch(err=>{
-        //         console.log(err.response.data);
-        //         //setError(err.response.data.error)
-        //     })
+        axios.post('https://plant-water-tracker.herokuapp.com/api/auth/login', credentials)
+            .then(resp=>{
+                console.log(resp.data);
+                localStorage.setItem('token', resp.data.token);
+                //localStorage.setItem('user_id', resp.data.user_id)
+                push('/my-plants');
+            })
+            .catch(err=>{
+                console.log(err.response.data);
+                //setError(err.response.data.error)
+            })
     }
 
     return (
@@ -68,6 +64,16 @@ const Login = (props) => {
                             type='password'
                             id="password"
                             value={credentials.password}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label className="label" htmlFor='phoneNumber'>Phone Number</label>
+                        <input
+                            className="input"
+                            type='text'
+                            id="phoneNumber"
+                            value={credentials.phoneNumber}
                             onChange={handleChange}
                         />
                     </div>

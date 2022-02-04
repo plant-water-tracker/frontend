@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import { useParams, useHistory } from 'react-router-dom';
 import axios from "axios";
 import Header from "./Header";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 const Profile = (props) => {
     const {push} = useHistory();
@@ -18,13 +17,14 @@ const Profile = (props) => {
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(()=>{
-        axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${id}`)
-			.then(resp=>{
-				console.log(resp);
-			})
-			.catch(err=>{
-				console.log(err);
-			})
+        console.log('ID for the user is:', id);
+        // axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${id}`)
+		// 	.then(resp=>{
+		// 		console.log(resp);
+		// 	})
+		// 	.catch(err=>{
+		// 		console.log(err.response.data);
+		// 	})
     }, []);
 
     const handleChange = (e) => {

@@ -1,13 +1,18 @@
 import React, {useState} from "react";
 import axios from "axios";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from "./Header";
 
 const Signup = (props) => {
+    const {push} = useHistory();
+
     const [credentials, setCredentials] = useState({
         username: '',
-        phone: '',
+        phoneNumber: '',
         password: ''
     });
+
+    const [success, setSuccess] = useState(false);
 
     const [error, setError] = useState('');
 
@@ -20,7 +25,22 @@ const Signup = (props) => {
 
     const handleSignup = (e) => {
         e.preventDefault();
-        //Axios call will go here
+        
+        axios.post('https://plant-water-tracker.herokuapp.com/api/auth/register', credentials)
+            .then(resp=>{
+                    setSuccess(!success);
+                    const timer = setTimeout(() => {
+                        console.log('This will run after 3 second!')
+                        setSuccess(!success)
+                        push('/login');
+                    }, 3000);
+                // localStorage.setItem('token', resp.data.token);
+                // localStorage.setItem('username', resp.data.username)
+            })
+            .catch(err=>{
+                console.log(err.response.data);
+                //setError(err.response.data.error)
+            })
     }
 
     return (
@@ -42,12 +62,12 @@ const Signup = (props) => {
                         />
                     </div>
                     <div>
-                        <label className="label" htmlFor='phone'>Phone Number</label>
+                        <label className="label" htmlFor='phoneNumber'>Phone Number</label>
                         <input
                             className="input"
                             type='text'
-                            id="phone"
-                            value={credentials.phone}
+                            id="phoneNumber"
+                            value={credentials.phoneNumber}
                             onChange={handleChange}
                         />
                     </div>
@@ -63,6 +83,7 @@ const Signup = (props) => {
                     </div>
                     <button className='button center primary max'>Sign Up</button>
                     {/* {error && <p id='error'>{error}</p>} */}
+                    {success && <p>You have successfully registered! Redirecting to Login...</p>}
                 </form>
             </div>
         </div>

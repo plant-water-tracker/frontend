@@ -51,7 +51,7 @@ function App(props) {
             
           <PrivateRoute path='/my-plants' component={MyPlants} plants={plants} handleDelete={handleDelete} />
             
-          <PrivateRoute path='/profile' component={Profile} />
+          <PrivateRoute path='/profile/:id' component={Profile} />
 
           <PrivateRoute path='/logout' component={Logout} />
 

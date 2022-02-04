@@ -6,13 +6,14 @@ import axios from 'axios';
 
 const AddPlant = (props) => {
     const {push} = useHistory();
-    const {id} = useParams();
+    const userId = localStorage.getItem('user_id');
 
     const [plant, setPlant] = useState({
         plant_id: Math.floor(Date.now()/1000),
         nickname: "",
         species: "",
         h2oFrequency: 0,
+        // this will change to userId
         user_id: 1
     });
 
