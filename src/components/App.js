@@ -15,9 +15,11 @@ import AddPlant from './AddPlant';
 function App(props) {
   
   const [plants, setPlants] = useState([]);
+  const userId = localStorage.getItem("user_id")
 
   useEffect(()=>{
-    const userId = localStorage.getItem("user_id")
+    console.log('App UserEffect is run here');
+    
     axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}/plants`)
       .then(res => {
         setPlants(res.data.userPlants);
@@ -45,14 +47,14 @@ function App(props) {
 
         <Switch>
           
-          <PrivateRoute path='/my-plants/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
+          <PrivateRoute exact path='/my-plants/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
 
-          <PrivateRoute path='/my-plants/add' component={AddPlant} setPlants={setPlants} plants={plants} />
+          <PrivateRoute exact path='/my-plants/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             
-          <PrivateRoute path='/my-plants' component={MyPlants} plants={plants} handleDelete={handleDelete} />
+          <PrivateRoute exact path='/my-plants' component={MyPlants} plants={plants} handleDelete={handleDelete} />
             
-          <PrivateRoute path='/profile/:id' component={Profile} />
-
+          <PrivateRoute exact path={`/profile`} component={Profile} />
+          
           <PrivateRoute path='/logout' component={Logout} />
 
           <Route path='/login'>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Redirect, Link } from 'react-router-dom';
 import '../styling/Header.css';
 
 const Header = () => {
     const token = localStorage.getItem('token');
-    //const user_id = localStorage.getItem('user_id');
+    const user_id = localStorage.getItem('user_id');
 
     return(
         <div className='header'>
@@ -13,7 +13,7 @@ const Header = () => {
                 {!token && <li><Link to="login">Login</Link></li>}
                 {!token && <li><Link to="signup">Signup</Link></li>}
                 {token && <li><Link to="my-plants">My Plants</Link></li>}
-                {token && <li><Link to="profile/:id">My Profile</Link></li>}
+                {token && <li><Link to="profile">My Profile</Link></li>}
                 {token && <li><Link to="logout">Logout</Link></li>}
             </ul>
         </div>

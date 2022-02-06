@@ -41,37 +41,8 @@ https://plant-water-tracker.herokuapp.com/api/users
 
 # *Meet the Team*
 
-
-`Carlton Lauckern` 
--Front End Engineer-
-
-Github: [https://github.com/personOne]
-
----------------------------------------------------------------------------------------------------------------------
-
-`Jacob Griffith-Elliott` 
--Front End Engineer-
-
-Github: [https://github.com/personTwo]
-
----------------------------------------------------------------------------------------------------------------------
-
-`Carlos Moreno`
--Front End Engineer-
-
-Github: [https://github.com/personThree]
-
----------------------------------------------------------------------------------------------------------------------
-
 `David Aihe`
 -Front End Engineer-
-
-Github: [https://github.com/personFour]
-
----------------------------------------------------------------------------------------------------------------------
-
-`Mike Orvin` 
--Backend Engineer-
 
 Github: [https://github.com/personFour]
 

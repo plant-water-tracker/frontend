@@ -5,7 +5,8 @@ import Header from "./Header";
 
 const Profile = (props) => {
     const {push} = useHistory();
-    const {id} = useParams();
+    //const {id} = useParams();
+    const userId = localStorage.getItem("user_id")
 
     const [user, setUser] = useState({
         username: '',
@@ -17,7 +18,7 @@ const Profile = (props) => {
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(()=>{
-        console.log('ID for the user is:', id);
+        console.log('ID for the user is:', userId);
         // axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${id}`)
 		// 	.then(resp=>{
 		// 		console.log(resp);
@@ -36,7 +37,7 @@ const Profile = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://plant-water-tracker.herokuapp.com/api/users/${id}`, user)
+        axios.put(`https://plant-water-tracker.herokuapp.com/api/users/${userId}`, user)
             .then(res=>{
                 push(`/my-plants`);
 			})
