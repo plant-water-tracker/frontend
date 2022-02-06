@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import Header from "./Header";
-import './Login.css';
+import '../styling/Login.css';
 
 const Login = (props) => {
     const {push} = useHistory();
@@ -29,12 +29,11 @@ const Login = (props) => {
             .then(resp=>{
                 console.log(resp.data);
                 localStorage.setItem('token', resp.data.token);
-                //localStorage.setItem('user_id', resp.data.user_id)
+                localStorage.setItem('user_id', resp.data.user_id)
                 push('/my-plants');
             })
             .catch(err=>{
-                console.log(err.response.data);
-                //setError(err.response.data.error)
+                setError(err.response.data.message)
             })
     }
 
@@ -48,6 +47,7 @@ const Login = (props) => {
                 
                 <form className="form" onSubmit={handleLogin}>
                     <div>
+                        {error && <p id='error'>{error}</p>}
                         <label className="label" htmlFor='username'>Username</label>
                         <input
                             className="input"
@@ -67,18 +67,7 @@ const Login = (props) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
-                        <label className="label" htmlFor='phoneNumber'>Phone Number</label>
-                        <input
-                            className="input"
-                            type='text'
-                            id="phoneNumber"
-                            value={credentials.phoneNumber}
-                            onChange={handleChange}
-                        />
-                    </div>
                     <button className="button center primary max" id='submit'>Login</button>
-                    {/* {error && <p id='error'>{error}</p>} */}
                 </form>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import PlantListItem from "./PlantListItem";
-import './MyPlants.css'
+import '../styling/MyPlants.css'
 import Header from "./Header";
 
 const MyPlants = (props) => {
@@ -24,7 +24,6 @@ const MyPlants = (props) => {
                         <th>Nickname</th>
                         <th>Species</th>
                         <th>Watering Frequency</th>
-                        <th></th>
                         <th></th>
                     </tr>
                     </thead>

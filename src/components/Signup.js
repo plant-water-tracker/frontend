@@ -30,16 +30,14 @@ const Signup = (props) => {
             .then(resp=>{
                     setSuccess(!success);
                     const timer = setTimeout(() => {
-                        console.log('This will run after 3 second!')
                         setSuccess(!success)
                         push('/login');
-                    }, 3000);
+                    }, 2000);
                 // localStorage.setItem('token', resp.data.token);
                 // localStorage.setItem('username', resp.data.username)
             })
             .catch(err=>{
-                console.log(err.response.data);
-                //setError(err.response.data.error)
+                setError(err.response.data.message)
             })
     }
 
@@ -52,6 +50,7 @@ const Signup = (props) => {
             <div className="container">
                 <form className="form" onSubmit={handleSignup}>
                     <div>
+                        {error && <p id='error'>{error}</p>}
                         <label className="label" htmlFor='username'>Username</label>
                         <input
                             className="input"
@@ -82,7 +81,6 @@ const Signup = (props) => {
                         />
                     </div>
                     <button className='button center primary max'>Sign Up</button>
-                    {/* {error && <p id='error'>{error}</p>} */}
                     {success && <p>You have successfully registered! Redirecting to Login...</p>}
                 </form>
             </div>
