@@ -7,8 +7,8 @@ import axios from 'axios';
 const EditPlant = (props) => {
     const {push} = useHistory();
     const {id} = useParams();
-
     const [plant, setPlant] = useState({
+        plant_id: id,
         nickname: '',
         species: '',
         h2oFrequency: ''

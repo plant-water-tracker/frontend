@@ -15,12 +15,13 @@ import AddPlant from './AddPlant';
 function App(props) {
   
   const [plants, setPlants] = useState([]);
-  
+
   useEffect(()=>{
     const userId = localStorage.getItem("user_id")
     axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}/plants`)
       .then(res => {
         setPlants(res.data.userPlants);
+        console.log(res.data.userPlants)
       })
       .catch(err => {
         console.log(err);
