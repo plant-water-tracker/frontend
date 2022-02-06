@@ -13,14 +13,14 @@ import EditPlant from './EditPlant';
 import AddPlant from './AddPlant';
 
 function App(props) {
-
+  
   const [plants, setPlants] = useState([]);
-
+  
   useEffect(()=>{
-
-    axios.get('https://plant-water-tracker.herokuapp.com/api/plants')
+    const userId = localStorage.getItem("user_id")
+    axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}/plants`)
       .then(res => {
-        setPlants(res.data);
+        setPlants(res.data.userPlants);
       })
       .catch(err => {
         console.log(err);
@@ -28,7 +28,6 @@ function App(props) {
   }, []);
 
   const handleDelete = (id) => {
-    
     axiosWithAuth()
         .delete(`/plants/${id}`)
             .then(resp=>{

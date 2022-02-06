@@ -67,7 +67,7 @@ const EditPlant = (props) => {
                         </div>
                         <div>
                             <label className="label" >Watering Frequency</label>
-                            <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="text" className="input"/>
+                            <input value={plant.h2oFrequency < 0 ? 0 : plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="input"/>
                         </div>
                     </div>
                     <div>

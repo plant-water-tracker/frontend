@@ -17,7 +17,7 @@ const PlantListItem = (props)=> {
   <tr key={plant_id}>
       <td>{nickname}</td>
       <td>{species}</td>
-      <td>{h2oFrequency} Times a Week</td>
+      <td>{h2oFrequency} Times per week</td>
       <td>
         <button onClick={handleClick} className='button secondary'>
           Edit

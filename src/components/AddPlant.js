@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const AddPlant = (props) => {
     const {push} = useHistory();
-    const userId = localStorage.getItem('user_id');
+    const userId = localStorage.getItem("user_id");
 
     const [plant, setPlant] = useState({
         plant_id: Math.floor(Date.now()/1000),
@@ -14,7 +14,7 @@ const AddPlant = (props) => {
         species: "",
         h2oFrequency: 0,
         // this will change to userId
-        user_id: 1
+        user_id: userId
     });
 
     const handleChange = (e) => {
@@ -33,7 +33,7 @@ const AddPlant = (props) => {
                 push(`/my-plants`);
 			})
 			.catch(err=>{
-				console.log(err.response.data );
+				console.log(err.response.data);
 			})
     }
 
@@ -55,8 +55,8 @@ const AddPlant = (props) => {
                             <input value={plant.species} onChange={handleChange} name="species" type="text" className="input"/>
                         </div>
                         <div>
-                            <label className="label">Watering Frequency</label>
-                            <input value={plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="input"/>
+                            <label className="label">Watering Frequency <span id="smaller">(times per week)</span></label>
+                            <input value={plant.h2oFrequency < 0 ? 0 : plant.h2oFrequency} onChange={handleChange} name="h2oFrequency" type="number" className="input"/>
                         </div>
                     </div>
                     <div>
