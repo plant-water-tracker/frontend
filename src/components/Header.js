@@ -1,10 +1,10 @@
 import React from 'react';
-import {Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styling/Header.css';
 
 const Header = () => {
     const token = localStorage.getItem('token');
-    const user_id = localStorage.getItem('user_id');
+    // const user_id = localStorage.getItem('user_id');
 
     return(
         <div className='header'>

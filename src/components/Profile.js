@@ -1,19 +1,17 @@
 import React, {useState, useEffect} from "react";
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import Header from "./Header";
 
 const Profile = (props) => {
     const {push} = useHistory();
-    //const {id} = useParams();
     const userId = localStorage.getItem("user_id")
 
     const [user, setUser] = useState({
         user_id: userId,
         username: '',
         phoneNumber: '',
-        password: '',
-        oldPassword: ''
+        password: null
     })
 
     const [disabledUser, setDisabledUser] = useState(true);
@@ -29,6 +27,7 @@ const Profile = (props) => {
                     username: resp.data[0].username,
                     phoneNumber: resp.data[0].phoneNumber
                 })
+                console.log("useEffect - line 24", user)
 			})
 			.catch(err=>{
 				console.log(err.response.data);
@@ -40,16 +39,18 @@ const Profile = (props) => {
             ...user,
             [e.target.name] : e.target.value
         });
+        console.log("handleChange user - line 38", user)
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.put(`https://plant-water-tracker.herokuapp.com/api/auth/update`, user)
             .then(res=>{
+                console.log("response- line 51", res)
                 push(`/my-plants`);
 			})
 			.catch(err=>{
-				console.log(err.response.data);
+				console.log(err.message);
 			})
 	}
 
@@ -85,15 +86,19 @@ const Profile = (props) => {
                             <input value={user.phoneNumber} onChange={handleChange} name="phoneNumber" type="text" className="input" disabled={disabled}/>
                             <button name="phone" onClick={handleEditPhone}>Edit</button>
                         </div>
+                        { !disabled && <div>
+                            <label className="label" > Insert password to confirm changes </label>
+                            <input value={user.password} onChange={handleChange} name="password" type="password" className="input"/>
+                        </div>    }
                         <div>
                             <button onClick={handleEditPass} className='button center primary max'>Change Password?</button>
                         </div>
-                        {passChange && <div>
+                        {passChange && <div>   
                             <label className="label" >Enter Old Password</label>
                             <input value={user.oldPassword} onChange={handleChange} name="oldPassword" type="password" className="input"/>
                             <label className="label" >Enter New Password</label>
                             <input value={user.password} onChange={handleChange} name="password" type="password" className="input"/>
-                        </div>}
+                        </div>}    
                     </div>
                     <div>
                         <button onClick={handleSubmit} className='button center primary max'>Submit</button>
