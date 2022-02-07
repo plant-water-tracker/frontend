@@ -9,23 +9,25 @@ const Profile = (props) => {
     const userId = localStorage.getItem("user_id")
 
     const [user, setUser] = useState({
+        user_id: userId,
         username: '',
         phoneNumber: '',
-        password: ''
+        password: '',
+        oldPassword: ''
     })
 
     const [disabledUser, setDisabledUser] = useState(true);
     const [disabled, setDisabled] = useState(true);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [passChange, setPassChange] = useState(false);
 
     useEffect(()=>{
         
         axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}`)
 			.then(resp=>{
                 setUser({
+                    ...user,
                     username: resp.data[0].username,
-                    phoneNumber: resp.data[0].phoneNumber,
-                    password: resp.data[0].password
+                    phoneNumber: resp.data[0].phoneNumber
                 })
 			})
 			.catch(err=>{
@@ -42,12 +44,12 @@ const Profile = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://plant-water-tracker.herokuapp.com/api/users/${userId}`, user)
+        axios.put(`https://plant-water-tracker.herokuapp.com/api/auth/update`, user)
             .then(res=>{
                 push(`/my-plants`);
 			})
 			.catch(err=>{
-				console.log(err);
+				console.log(err.response.data);
 			})
 	}
 
@@ -61,7 +63,7 @@ const Profile = (props) => {
     }
     const handleEditPass = (e) => {
         e.preventDefault();
-        setIsDisabled(!isDisabled);
+        setPassChange(!passChange);
     }
     
     return (
@@ -84,10 +86,14 @@ const Profile = (props) => {
                             <button name="phone" onClick={handleEditPhone}>Edit</button>
                         </div>
                         <div>
-                            <label className="label" >Password</label>
-                            <input value={user.password} onChange={handleChange} name="password" type="password" className="input" disabled={isDisabled}/>
-                            <button name="pass" onClick={handleEditPass}>Edit</button>
+                            <button onClick={handleEditPass} className='button center primary max'>Change Password?</button>
                         </div>
+                        {passChange && <div>
+                            <label className="label" >Enter Old Password</label>
+                            <input value={user.oldPassword} onChange={handleChange} name="oldPassword" type="password" className="input"/>
+                            <label className="label" >Enter New Password</label>
+                            <input value={user.password} onChange={handleChange} name="password" type="password" className="input"/>
+                        </div>}
                     </div>
                     <div>
                         <button onClick={handleSubmit} className='button center primary max'>Submit</button>
