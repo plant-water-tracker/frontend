@@ -14,24 +14,29 @@ const Profile = (props) => {
         password: ''
     })
 
+    const [disabledUser, setDisabledUser] = useState(true);
     const [disabled, setDisabled] = useState(true);
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(()=>{
-        console.log('ID for the user is:', userId);
-        // axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${id}`)
-		// 	.then(resp=>{
-		// 		console.log(resp);
-		// 	})
-		// 	.catch(err=>{
-		// 		console.log(err.response.data);
-		// 	})
+        
+        axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}`)
+			.then(resp=>{
+                setUser({
+                    username: resp.data[0].username,
+                    phoneNumber: resp.data[0].phoneNumber,
+                    password: resp.data[0].password
+                })
+			})
+			.catch(err=>{
+				console.log(err.response.data);
+			})
     }, []);
 
     const handleChange = (e) => {
         setUser({
             ...user,
-            [e.target.id] : e.target.value
+            [e.target.name] : e.target.value
         });
     };
 
@@ -46,10 +51,16 @@ const Profile = (props) => {
 			})
 	}
 
+    const handleEditUser = (e) => {
+        e.preventDefault();
+        setDisabledUser(!disabledUser);
+    }
     const handleEditPhone = (e) => {
+        e.preventDefault();
         setDisabled(!disabled);
     }
     const handleEditPass = (e) => {
+        e.preventDefault();
         setIsDisabled(!isDisabled);
     }
     
@@ -57,11 +68,16 @@ const Profile = (props) => {
         <div>
             <Header />
             <div className="container">
-                <form className="form" onSubmit={handleSubmit}>
+                <form className="form">
                     <div>
                         <h1 className='title'>My Profile</h1>
                     </div>
                     <div>
+                        <div>
+                            <label className="label" >Username</label>
+                            <input value={user.username} onChange={handleChange} name="username" type="text" className="input" disabled={disabledUser}/>
+                            <button name="username" onClick={handleEditUser}>Edit</button>
+                        </div>
                         <div>
                             <label className="label" >Phone Number</label>
                             <input value={user.phoneNumber} onChange={handleChange} name="phoneNumber" type="text" className="input" disabled={disabled}/>
@@ -74,7 +90,7 @@ const Profile = (props) => {
                         </div>
                     </div>
                     <div>
-                        <button className='button center primary max'>Submit</button>
+                        <button onClick={handleSubmit} className='button center primary max'>Submit</button>
                     </div>
                 </form>
             </div>
