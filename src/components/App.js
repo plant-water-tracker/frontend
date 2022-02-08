@@ -18,12 +18,10 @@ function App(props) {
   const userId = localStorage.getItem("user_id")
 
   useEffect(()=>{
-    console.log('App UserEffect is run here');
     
     axios.get(`https://plant-water-tracker.herokuapp.com/api/users/${userId}/plants`)
       .then(res => {
         setPlants(res.data.userPlants);
-        console.log(res.data.userPlants)
       })
       .catch(err => {
         console.log(err);
@@ -41,13 +39,29 @@ function App(props) {
             })   
   }
 
+  const handleEdit = (id, plant) => {
+    axiosWithAuth()
+      .put(`/plants/${id}`, plant)
+        .then((res) => {
+          setPlants(plants.map(plant=> {
+            if(plant.plant_id === id){
+                return res.data[0];
+            }
+            return plant;
+          }))
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  }
+
   return (
     <div className="App">
       <Router>
 
         <Switch>
           
-          <PrivateRoute exact path='/my-plants/edit/:id' component={EditPlant} setPlants={setPlants} plants={plants} />
+          <PrivateRoute exact path='/my-plants/edit/:id' component={EditPlant} handleEdit={handleEdit} />
 
           <PrivateRoute exact path='/my-plants/add' component={AddPlant} setPlants={setPlants} plants={plants} />
             

@@ -33,19 +33,9 @@ const EditPlant = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://plant-water-tracker.herokuapp.com/api/plants/${id}`, plant)
-            .then(res=>{
-                props.setPlants(props.plants.map(plant=> {
-                    if(plant.plant_id === id){
-                        return res.data[0];
-                    }
-                    return plant;
-                }))
-                push(`/my-plants`);
-			})
-			.catch(err=>{
-				console.log(err);
-			})
+        props.handleEdit(id, plant)
+
+        push(`/my-plants`);
 	}
 
     return(
